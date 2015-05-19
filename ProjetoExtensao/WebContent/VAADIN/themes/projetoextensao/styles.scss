@@ -1,0 +1,16 @@
+@import "addons.scss";
+@import "projetoextensao.scss";
+@import "runo";
+
+/* This file prefixes all rules with the theme name to avoid causing conflicts with other themes. */
+/* The actual styles should be defined in projetoextensao.scss */
+.projetoextensao {
+  @include addons;
+  @include projetoextensao;
+  @include runo;
+  
+  .v-formlayout.formserie .v-formlayout.formseriedados {
+  	border: 10px;
+  }
+  
+}
