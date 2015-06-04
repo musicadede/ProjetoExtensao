@@ -4,22 +4,21 @@ import com.example.projetoextensao.Banco;
 
 public class Imc {
 
-	private String tipo;
+	private char tipo;
 	private int idade;
 	private double baixoPeso;
 	private double normal;
 	private double excessoPeso;
-	private double obesidade;
 	
 	public Imc() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public void setTipo(String tipo) {
+	public void setTipo(char tipo) {
 		this.tipo = tipo;
 	}
 	
-	public String getTipo() {
+	public char getTipo() {
 		return tipo;
 	}
 	
@@ -56,13 +55,6 @@ public class Imc {
 		return excessoPeso;
 	}
 	
-	public void setObesidade(double obesidade) {
-		this.obesidade = obesidade;
-	}
-	
-	public double getObesidade() {
-		return obesidade;
-	}
 	
 	
 }

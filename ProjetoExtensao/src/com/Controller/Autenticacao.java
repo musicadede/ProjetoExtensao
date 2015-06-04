@@ -1,4 +1,4 @@
-package com.example.projetoextensao;
+package com.Controller;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import org.apache.commons.collections.functors.ExceptionPredicate;
+
+import com.example.projetoextensao.ConexaoFactory;
 
 
 

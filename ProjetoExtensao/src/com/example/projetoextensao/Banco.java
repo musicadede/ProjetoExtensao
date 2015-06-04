@@ -8,6 +8,7 @@ import java.util.List;
 
 import java_cup.internal_error;
 
+import com.model.DadosRelatorio;
 import com.model.Imc;
 import com.model.Serie;
 import com.vaadin.ui.ComboBox;
@@ -24,6 +25,7 @@ public class Banco {
 	
 	public Banco() {
 		conexao =  new ConexaoFactory().getConnection();
+		System.out.println("Conectado banco");
 	}
 	
 	//okbanco
@@ -188,7 +190,7 @@ public class Banco {
 			resultado = ps.executeQuery(); 
 			
 			while(resultado.next()){
-				dados.setSobrePeso(Integer.parseInt(resultado.getString("total")));
+				dados.setExcessoPeso(Integer.parseInt(resultado.getString("total")));
 			}
 										
 		} catch (SQLException e) {
@@ -239,7 +241,7 @@ public class Banco {
 			resultado = ps.executeQuery(); 
 			
 			while(resultado.next()){
-				dados.setSobrePeso(Integer.parseInt(resultado.getString("total")));
+				dados.setExcessoPeso(Integer.parseInt(resultado.getString("total")));
 			}
 										
 		} catch (SQLException e) {
@@ -257,7 +259,7 @@ public class Banco {
 				dados.setObesidade(Integer.parseInt(resultado.getString("total")));
 				
 				System.out.println("BDCE baixo peso = "+dados.getBaixoPeso());
-				System.out.println("BDCE sobrepeso = "+dados.getSobrePeso());
+				System.out.println("BDCE sobrepeso = "+dados.getExcessoPeso());
 				System.out.println("BDCE Obesidade = "+dados.getObesidade());
 				
 			}
@@ -296,7 +298,7 @@ public class Banco {
 				resultado = ps.executeQuery(); 
 				
 				while(resultado.next()){
-					dados.setSobrePeso(Integer.parseInt(resultado.getString("total")));
+					dados.setExcessoPeso(Integer.parseInt(resultado.getString("total")));
 				}
 											
 			} catch (SQLException e) {
@@ -381,7 +383,7 @@ public class Banco {
 	public  void salvarImcMasc(Imc imc) {
 		
 		String sql = "INSERT INTO imc_masculino(idade_imc_masc,baixo_peso,normal,excesso_peso,obesidade)"
-						+ "Values ("+imc.getIdade()+","+imc.getBaixoPeso()+","+imc.getNormal()+","+imc.getExcessoPeso()+","+imc.getObesidade()+")";
+						+ "Values ("+imc.getIdade()+","+imc.getBaixoPeso()+","+imc.getNormal()+","+imc.getExcessoPeso()+");";
 				
 		try {
 			ps = conexao.prepareStatement(sql);
@@ -398,7 +400,7 @@ public class Banco {
 	public  void salvarImcFem(Imc imc) {
 		
 		String sql = "INSERT INTO imc_femonino(idade_imc_masc,baixo_peso,normal,excesso_peso,obesidade)"
-				+ "Values ("+imc.getIdade()+","+imc.getBaixoPeso()+","+imc.getNormal()+","+imc.getExcessoPeso()+","+imc.getObesidade()+")";
+				+ "Values ("+imc.getIdade()+","+imc.getBaixoPeso()+","+imc.getNormal()+","+imc.getExcessoPeso()+");";
 		
 		try {
 			ps = conexao.prepareStatement(sql);

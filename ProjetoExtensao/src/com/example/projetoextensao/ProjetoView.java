@@ -13,6 +13,8 @@ import org.dussan.vaadin.dcharts.options.Options;
 import org.dussan.vaadin.dcharts.options.SeriesDefaults;
 import org.dussan.vaadin.dcharts.renderers.series.PieRenderer;
 
+import com.Controller.Autenticacao;
+import com.model.DadosRelatorio;
 import com.model.Imc;
 import com.model.Serie;
 import com.vaadin.data.Property.ValueChangeEvent;
@@ -38,6 +40,7 @@ import com.vaadin.ui.Table;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
+import com.view.Autenticar;
 import com.view.SubWindowSerie;
 
 
@@ -53,12 +56,12 @@ public class ProjetoView  extends VerticalLayout {
 	final VerticalLayout vlEsquerda  = new VerticalLayout();
 	final VerticalLayout vlMeio= new VerticalLayout();
 	final HorizontalLayout vlDireita = new HorizontalLayout();
+	Button logout= new  Button("Logout");
 	
 	String admRoot = "dede";
 	String senhaRoot = "dede";
-	Button logout= new  Button("Logout");
 	Banco banco ;
-		
+			
 	public ProjetoView() {
 		banco = new Banco();
 //		
@@ -70,12 +73,14 @@ public class ProjetoView  extends VerticalLayout {
 		hlayout.setSpacing(true);
 		this.setSizeFull();
 		
-		viewAutenticacao();
+//		UI.getCurrent().setContent(new Autenticar());
+//		viewAutenticacao();
 //		ViewUsuario();
 //		viewAdminitrador();
 		setSizeFull();
 	}
 	
+	//ok
 	private void viewAutenticacao() {
 		
 		this.removeAllComponents();
@@ -162,7 +167,7 @@ public class ProjetoView  extends VerticalLayout {
 			
 			@Override
 			public void buttonClick(ClickEvent event) {
-				viewEscola();
+				//viewEscola();
 				
 			}
 		});
@@ -679,6 +684,7 @@ public class ProjetoView  extends VerticalLayout {
 		
 	}
 
+	//ok
 	public void viewAdmRoot(){
 		this.removeAllComponents();
 		emBaixo.removeAllComponents();
@@ -833,6 +839,7 @@ public class ProjetoView  extends VerticalLayout {
 		
 	}
 	
+	//ok
 	public Button logout(){
 		logout.addClickListener( new ClickListener() {
 			
@@ -853,7 +860,7 @@ public class ProjetoView  extends VerticalLayout {
 		
 		
 		Number baixopes = dados.getBaixoPeso();
-		Number sobrepes = dados.getSobrePeso();
+		Number sobrepes = dados.getExcessoPeso();
 		Number obesi = dados.getObesidade();
 		
 		DataSeries dataSeries = new DataSeries()
@@ -1033,57 +1040,6 @@ public class ProjetoView  extends VerticalLayout {
 
 	}
 	
-	public void viewEscola(){
-		vlDireita.removeAllComponents();
-		vlMeio.removeAllComponents();
-		
-		FormLayout subVlDireita = new FormLayout();
-		
-		Button CadastrarEscola = new Button ("Cadastrar", new ClickListener() {
-			
-			@Override
-			public void buttonClick(ClickEvent event) {
-			viewCadastrarEscola();
-				
-			}
-
-		});
-		
-		Button EditarEscola= new Button ("Editar", new ClickListener() {
-			
-			@Override
-			public void buttonClick(ClickEvent event) {
-//			editar aluno
-				
-			}
-		});
-		
-		Button ExcluirEscola = new Button ("Excluir", new ClickListener() {
-			
-			@Override
-			public void buttonClick(ClickEvent event) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
-
-		Button BuscarEscola= new Button ("Buscar", new ClickListener() {
-			
-			@Override
-			public void buttonClick(ClickEvent event) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
-
-		
-		subVlDireita.addComponent(CadastrarEscola);
-		subVlDireita.addComponent(EditarEscola);
-		subVlDireita.addComponent(ExcluirEscola);
-		subVlDireita.addComponent(BuscarEscola);
-		vlMeio.addComponent(subVlDireita);
-
-	}
 	
 	public void viewCadastrarEscola(){
 		vlDireita.removeAllComponents();
@@ -2047,7 +2003,6 @@ public class ProjetoView  extends VerticalLayout {
 		TextField baixoPesoMasc = new TextField("baixo Peso");
 		TextField normalMasc = new TextField("Normal");
 		TextField excessoPesoMasc= new TextField("Excesso de Peso");
-		TextField obesidadeMasc = new TextField("Obesidade");
 		
 		
 		tituloMasc.addComponent(nomeTabelaMasc);
@@ -2055,7 +2010,6 @@ public class ProjetoView  extends VerticalLayout {
 		apresTabelaMasc.addComponent(baixoPesoMasc);
 		apresTabelaMasc.addComponent(normalMasc);
 		apresTabelaMasc.addComponent(excessoPesoMasc);
-		apresTabelaMasc.addComponent(obesidadeMasc);
 		
 		
 		geralMasc.addComponent(tituloMasc);
@@ -2100,14 +2054,7 @@ public class ProjetoView  extends VerticalLayout {
 			}
 		});
 
-		obesidadeMasc.addValueChangeListener(new ValueChangeListener() {
-			
-			@Override
-			public void valueChange(ValueChangeEvent event) {
-				imcMasc.setObesidade(Double.parseDouble(obesidadeMasc.getValue().toString()));
-				
-			}
-		});
+	
 
 		
 		//-------------fim do codigo de vinculo dos componentes com o objeto imcMasc
@@ -2130,14 +2077,12 @@ public class ProjetoView  extends VerticalLayout {
 		TextField baixoPesoFem = new TextField("baixo Peso");
 		TextField normalFem = new TextField("Normal");
 		TextField excessoPesoFem= new TextField("Excesso de Peso");
-		TextField obesidadeFem = new TextField("Obesidade");
 	
 		tituloFem.addComponent(nomeTabelaFem);
 		apresTabelaFem.addComponent(idadeFem);
 		apresTabelaFem.addComponent(baixoPesoFem);
 		apresTabelaFem.addComponent(normalFem);
 		apresTabelaFem.addComponent(excessoPesoFem);
-		apresTabelaFem.addComponent(obesidadeFem);
 		
 		
 		geralFem.addComponent(tituloFem);
@@ -2185,13 +2130,6 @@ public class ProjetoView  extends VerticalLayout {
 			}
 		});
 
-		obesidadeFem.addValueChangeListener(new ValueChangeListener() {
-			@Override
-			public void valueChange(ValueChangeEvent event) {
-				imcFem.setObesidade(Double.parseDouble(obesidadeFem.getValue().toString()));
-				
-			}
-		});
 
 		//-------------fim do codigo de vinculo dos componentes com o objeto imcFem
 

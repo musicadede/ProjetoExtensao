@@ -32,5 +32,9 @@
 @mixin projetoextensao {
   @include valo;
 
+	
+  .v-horizontallayout{
+  		background:white;
+  }
   // Insert your own theme rules here
 }
