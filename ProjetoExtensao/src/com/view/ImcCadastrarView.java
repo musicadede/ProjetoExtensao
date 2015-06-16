@@ -15,25 +15,18 @@ import com.vaadin.ui.VerticalLayout;
 
 public class ImcCadastrarView extends VerticalLayout{
 	
-	private Imc imcMasc;
-	private Imc imcFem;
+	public Imc imc;
 	private ImcService imcService;
 	
-	private TextField idadeMasc ;
-	private TextField baixoPesoMasc ;
-	private TextField normalMasc ;
-	private TextField excessoPesoMasc;
+	public TextField idade;
+	public TextField baixoPeso;
+	public TextField normal;
+	public TextField excessoPeso;
 	
-	private TextField idadeFem ;
-	private TextField baixoPesoFem ;
-	private TextField normalFem ;
-	private TextField excessoPesoFem;
-	
-	public ImcCadastrarView() {
+	public ImcCadastrarView(char tabelaSexo) {
 	
 		imcService = new ImcService();
-		construirTabelaImcMasc();
-		construtorTabImcFem();
+		construirTabelaImc(tabelaSexo);
 		
 		Button salvar= new Button("Salvar",new ClickListener() {
 					
@@ -41,25 +34,22 @@ public class ImcCadastrarView extends VerticalLayout{
 					public void buttonClick(ClickEvent event) {
 						
 						if(validarDados()){
-							imcMasc= new Imc();
-							imcMasc.setTipo('M');
-							imcMasc.setIdade(Integer.parseInt(idadeMasc.getValue().toString()));
-							imcMasc.setBaixoPeso(Double.parseDouble(baixoPesoMasc.getValue().toString()));
-							imcMasc.setNormal(Double.parseDouble(normalMasc.getValue().toString()));
-							imcMasc.setExcessoPeso(Double.parseDouble(excessoPesoMasc.getValue().toString()));
+							imc= new Imc();
 							
+							if(tabelaSexo=='M'){
+								imc.setTipo('M');
+							}
 							
-							imcFem= new Imc();
-							imcFem.setTipo('F');
-							imcFem.setIdade(Integer.parseInt(idadeFem.getValue().toString()));
-							imcFem.setBaixoPeso(Double.parseDouble(baixoPesoFem.getValue().toString()));
-							imcFem.setNormal(Double.parseDouble(normalFem.getValue().toString()));
-							imcFem.setExcessoPeso(Double.parseDouble(excessoPesoFem.getValue().toString()));
+							else if (tabelaSexo=='F'){
+								imc.setTipo('F');
+							}
+							imc.setIdade(Integer.parseInt(idade.getValue().toString()));
+							imc.setBaixoPeso(Double.parseDouble(baixoPeso.getValue().toString()));
+							imc.setNormal(Double.parseDouble(normal.getValue().toString()));
+							imc.setExcessoPeso(Double.parseDouble(excessoPeso.getValue().toString()));
 							
-							
-							imcService.salvarImc(imcMasc);
-							imcService.salvarImc(imcFem);
-							
+								imcService.salvarImc(imc);
+														
 							limparDados();
 							Notification.show("Cadastrado Com Sucesso!");
 						}
@@ -72,84 +62,59 @@ public class ImcCadastrarView extends VerticalLayout{
 	}
 	
 	protected void limparDados() {
-		imcMasc= new Imc();
+		imc= new Imc();
 
-		idadeMasc.setValue("");
-		baixoPesoMasc.setValue("");
-		normalMasc.setValue("");
-		excessoPesoMasc.setValue("");
-		
-		
-		imcFem= new Imc();
-		idadeFem.setValue("");
-		baixoPesoFem.setValue("");
-		normalFem.setValue("");
-		excessoPesoFem.setValue("");
-		
+		idade.setValue("");
+		baixoPeso.setValue("");
+		normal.setValue("");
+		excessoPeso.setValue("");
 
 	}
 
-	public void construirTabelaImcMasc(){
+	public void construirTabelaImc(char tabelaSexo){
 	
+		
 		this.setSizeUndefined();
+		Label nomeTabela  = new Label();
+		
 		FormLayout geral = new FormLayout();
 		geral.setSpacing(true);
-		HorizontalLayout tituloTabMasc = new HorizontalLayout();
-		HorizontalLayout apresTabelaMasc = new HorizontalLayout();
-		apresTabelaMasc.setSpacing(true);	
+		HorizontalLayout tituloTab = new HorizontalLayout();
+		HorizontalLayout apresTabela = new HorizontalLayout();
+		apresTabela.setSpacing(true);	
 		
-		Label nomeTabelaMasc = new Label("Imc Masculino");
-		idadeMasc = new TextField("idade");
-		baixoPesoMasc = new TextField("baixo Peso");
-		normalMasc = new TextField("Normal");
-		excessoPesoMasc= new TextField("Excesso de Peso");
+		if(tabelaSexo=='M'){
+			nomeTabela.setCaption("Imc Masculino");
+		}
+		
+		else if(tabelaSexo=='F'){
+			nomeTabela.setCaption("Imc Feminino");
+		}
 		
 		
-		tituloTabMasc.addComponent(nomeTabelaMasc);
-		apresTabelaMasc.addComponent(idadeMasc);
-		apresTabelaMasc.addComponent(baixoPesoMasc);
-		apresTabelaMasc.addComponent(normalMasc);
-		apresTabelaMasc.addComponent(excessoPesoMasc);
+		idade = new TextField("idade");
+		baixoPeso = new TextField("baixo Peso");
+		normal = new TextField("Normal");
+		excessoPeso = new TextField("Excesso de Peso");
+		
+		
+		tituloTab.addComponent(nomeTabela);
+		apresTabela.addComponent(idade);
+		apresTabela.addComponent(baixoPeso);
+		apresTabela.addComponent(normal);
+		apresTabela.addComponent(excessoPeso);
 		
 			
-		this.addComponents(tituloTabMasc,apresTabelaMasc);
-		this.setComponentAlignment(tituloTabMasc, Alignment.MIDDLE_CENTER);
-		this.setComponentAlignment(apresTabelaMasc, Alignment.MIDDLE_CENTER);
+		this.addComponents(tituloTab,apresTabela);
+		this.setComponentAlignment(tituloTab, Alignment.MIDDLE_CENTER);
+		this.setComponentAlignment(apresTabela, Alignment.MIDDLE_CENTER);
 	}
 		
-	public void construtorTabImcFem(){
-		this.setSizeUndefined();
-		FormLayout geral = new FormLayout();
-		geral.setSpacing(true);
-		HorizontalLayout tituloTabFem = new HorizontalLayout();
-		HorizontalLayout apresTabelaFem= new HorizontalLayout();
-		apresTabelaFem.setSpacing(true);	
-		
-		Label nomeTabelaFem = new Label("Imc Feminino");
-		idadeFem = new TextField("idade");
-		baixoPesoFem = new TextField("baixo Peso");
-		normalFem = new TextField("Normal");
-		excessoPesoFem= new TextField("Excesso de Peso");
-		
-		
-		tituloTabFem.addComponent(nomeTabelaFem);
-		apresTabelaFem.addComponent(idadeFem);
-		apresTabelaFem.addComponent(baixoPesoFem);
-		apresTabelaFem.addComponent(normalFem);
-		apresTabelaFem.addComponent(excessoPesoFem);
-		
-		
-		this.addComponents(tituloTabFem,apresTabelaFem);
-		this.setComponentAlignment(tituloTabFem, Alignment.MIDDLE_CENTER);
-		this.setComponentAlignment(apresTabelaFem, Alignment.MIDDLE_CENTER);
-		
-	}
-
+	
 	public boolean validarDados(){
 		boolean resposta=false;
 		
-		if(idadeMasc.getValue()!=null||baixoPesoMasc.getValue()!=null||normalMasc.getValue()!=null||excessoPesoMasc.getValue()!=null||
-				idadeFem.getValue()!=null||baixoPesoFem.getValue()!=null||normalFem.getValue()!=null||excessoPesoFem.getValue()!=null){
+		if(idade.getValue()!=null||baixoPeso.getValue()!=null||normal.getValue()!=null||excessoPeso.getValue()!=null){
 		resposta =true;
 		}
 		
@@ -159,5 +124,7 @@ public class ImcCadastrarView extends VerticalLayout{
 		return resposta;
 		
 	}
+	
+	
 	
 }

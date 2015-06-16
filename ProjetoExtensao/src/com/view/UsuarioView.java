@@ -65,32 +65,6 @@ public class UsuarioView extends VerticalLayout {
 			}
 		};
 		
-		MenuBar.Command editarEscola = new Command() {
-			
-			@Override
-			public void menuSelected(MenuItem selectedItem) {
-				// TODO Auto-generated method stub
-				
-			}
-		};
-		
-		MenuBar.Command buscarEscola = new Command() {
-			
-			@Override
-			public void menuSelected(MenuItem selectedItem) {
-				// TODO Auto-generated method stub
-				
-			}
-		};
-		
-		MenuBar.Command excluirEscola = new Command() {
-			
-			@Override
-			public void menuSelected(MenuItem selectedItem) {
-				// TODO Auto-generated method stub
-				
-			}
-		};
 		
 		MenuBar.Command relatorioView = new Command() {
 			
@@ -101,11 +75,22 @@ public class UsuarioView extends VerticalLayout {
 			}
 		};
 		
+		MenuBar.Command menuAlunoView = new Command() {
+			
+			@Override
+			public void menuSelected(MenuItem selectedItem) {
+				AlunoView();
+				
+			}
+		};
+		
+		
+		
 
 		MenuItem escola = menu.addItem("Escola", null);
 		escola.setIcon(FontAwesome.USER);
 		
-		MenuItem aluno= menu.addItem("Aluno", null);
+		MenuItem aluno= menu.addItem("Aluno",menuAlunoView);
 		aluno.setIcon(FontAwesome.TABLE);
 		
 		MenuItem relatorio= menu.addItem("Relatório", relatorioView);
@@ -117,14 +102,8 @@ public class UsuarioView extends VerticalLayout {
 		
 		
 		escola.addItem("Cadastrar", cadastrarEscola);
-		escola.addItem("Editar", cadastrarEscola);
-		escola.addItem("Buscar", cadastrarEscola);
-		escola.addItem("Excluir", cadastrarEscola);
 		
 		aluno.addItem("Cadastrar", cadastrarEscola);
-		aluno.addItem("Editar", cadastrarEscola);
-		aluno.addItem("Buscar", cadastrarEscola);
-		aluno.addItem("Excluir", cadastrarEscola);
 		
 
 		MenuBar logout = new MenuBar();
@@ -140,6 +119,13 @@ public class UsuarioView extends VerticalLayout {
 	}
 	
 	
+	protected void AlunoView() {
+		hlnavegacao.removeAllComponents();
+		VerticalLayout hlAlunoView= new AlunoCadastro();
+		hlnavegacao.addComponent(hlAlunoView);
+		hlnavegacao.setComponentAlignment(hlAlunoView, Alignment.BOTTOM_CENTER);
+	}
+
 	protected void relatorioView() {
 		hlnavegacao.removeAllComponents();
 		hlnavegacao.addComponent(new RelatorioView());

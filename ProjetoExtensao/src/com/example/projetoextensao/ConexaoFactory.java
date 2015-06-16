@@ -10,13 +10,21 @@ public class ConexaoFactory {
 	private String senha;
 	int contador =0;
 	
+//	public ConexaoFactory(){
+//		user = "userlaf";
+//		senha = "laf.2015";
+//	}
+//	
+//	public Connection getConnection(){
+//		String url = "jdbc:postgresql://localhost:5432/db_laf";
+	
 	public ConexaoFactory(){
 		user = "postgres";
 		senha = "root";
 	}
 	
 	public Connection getConnection(){
-		String url = "jdbc:postgresql://localhost:5432/projetoextensao";
+		String url = "jdbc:postgresql://localhost:5432/db_laf";
 
 			try {
 				Class.forName("org.postgresql.Driver");

@@ -3,12 +3,12 @@ package com.model;
 public class Flexibilidade {
 	
 	private int idade;
-	private double muitoFraco;
-	private double fraco;
-	private double razoavel;
-	private double bom;
-	private double muitoBom;
-	private double excelente;
+	private int muitoFraco;
+	private int fraco;
+	private int razoavel;
+	private int bom;
+	private int muitoBom;
+	private char tipo;
 	
 	public Flexibilidade() {
 		// TODO Auto-generated constructor stub
@@ -22,54 +22,55 @@ public class Flexibilidade {
 		this.idade = idade;
 	}
 
-	public double getMuitoFraco() {
+	public int getMuitoFraco() {
 		return muitoFraco;
 	}
 
-	public void setMuitoFraco(double muitoFraco) {
+	public void setMuitoFraco(int muitoFraco) {
 		this.muitoFraco = muitoFraco;
 	}
 
-	public double getFraco() {
+	public int getFraco() {
 		return fraco;
 	}
 
-	public void setFraco(double fraco) {
+	public void setFraco(int fraco) {
 		this.fraco = fraco;
 	}
 
-	public double getRazoavel() {
+	public int getRazoavel() {
 		return razoavel;
 	}
 
-	public void setRazoavel(double razoavel) {
+	public void setRazoavel(int razoavel) {
 		this.razoavel = razoavel;
 	}
 
-	public double getBom() {
+	public int getBom() {
 		return bom;
 	}
 
-	public void setBom(double bom) {
+	public void setBom(int bom) {
 		this.bom = bom;
 	}
 
-	public double getMuitoBom() {
+	public int getMuitoBom() {
 		return muitoBom;
 	}
 
-	public void setMuitoBom(double muitoBom) {
+	public void setMuitoBom(int muitoBom) {
 		this.muitoBom = muitoBom;
 	}
 
-	public double getExcelente() {
-		return excelente;
+
+	public char getTipo() {
+		return tipo;
 	}
 
-	public void setExcelente(double excelente) {
-		this.excelente = excelente;
+	public void setTipo(char tipo) {
+		this.tipo = tipo;
 	}
-	
+
 	
 	
 }

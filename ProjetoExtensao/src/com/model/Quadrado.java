@@ -7,7 +7,7 @@ public class Quadrado {
 	private double muitoBom;
 	private double bom;
 	private double razoavel;
-	private double fraco;
+	public char Tipo;
 	
 	public Quadrado() {
 		// TODO Auto-generated constructor stub
@@ -53,13 +53,14 @@ public class Quadrado {
 		this.razoavel = razoavel;
 	}
 
-	public double getFraco() {
-		return fraco;
+	public char getTipo() {
+		return Tipo;
 	}
 
-	public void setFraco(double fraco) {
-		this.fraco = fraco;
+	public void setTipo(char tipo) {
+		Tipo = tipo;
 	}
+
 	
 	
 }

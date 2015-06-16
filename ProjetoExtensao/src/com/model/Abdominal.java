@@ -8,10 +8,18 @@ public class Abdominal {
 	private int razoavel;
 	private int bom;
 	private int muitoBom;
-	private int excelente;
+	private char Tipo;
 	
 	public Abdominal() {
 		// TODO Auto-generated constructor stub
+	}
+	
+	public char getTipo() {
+		return Tipo;
+	}
+
+	public void setTipo(char tipo) {
+		Tipo = tipo;
 	}
 
 	public int getIdade() {
@@ -62,14 +70,5 @@ public class Abdominal {
 		this.muitoBom = muitoBom;
 	}
 
-	public int getExcelente() {
-		return excelente;
-	}
-
-	public void setExcelente(int excelente) {
-		this.excelente = excelente;
-	}
-	
-	
 	
 }

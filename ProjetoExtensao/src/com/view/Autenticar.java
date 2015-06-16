@@ -24,8 +24,8 @@ import com.vaadin.ui.VerticalLayout;
 
 public class Autenticar extends VerticalLayout implements View {
 	
-	String admRoot = "dede";
-	String senhaRoot = "dede";
+	String admRoot = "andre";
+	String senhaRoot = "musica.1030";
 	Button logout= new  Button("Logout");
 	Banco banco ;
 	

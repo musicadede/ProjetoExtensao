@@ -3,7 +3,6 @@ package com.Service;
 import java.util.List;
 
 import com.DAO.EscolaDAO;
-import com.model.Escola;
 
 public class EscolaService {
 
@@ -18,5 +17,12 @@ public class EscolaService {
 		escolaDAO = new EscolaDAO();
 		return escolaDAO.buscarIDEscola(nomeEscola);
 	}
+
+	public List<String> buscarEnsino(int idEscola) {
+		escolaDAO = new EscolaDAO();
+		return escolaDAO.buscarEnsino(idEscola);
+	}
+
+	
 
 }

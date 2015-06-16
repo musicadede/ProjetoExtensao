@@ -1,7 +1,6 @@
 package com.Service;
 
 import com.DAO.DadosDAO;
-import com.model.DadosRelatorio;
 
 public class DadosService {
 

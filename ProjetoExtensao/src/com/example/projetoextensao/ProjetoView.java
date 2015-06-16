@@ -2619,7 +2619,7 @@ public class ProjetoView  extends VerticalLayout {
 				
 				if(idserie!=0){
 					
-					serie.setId(idserie);
+//					serie.setS(idserie);
 										
 					FormLayout fldados = new FormLayout();
 					fldados.setStyleName("formseriedados");

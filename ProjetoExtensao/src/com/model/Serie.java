@@ -2,7 +2,6 @@ package com.model;
 
 public class Serie {
 
-	private int id;
 	private int serie;
 	private String ensino;
 	
@@ -10,14 +9,6 @@ public class Serie {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public void setId(int id) {
-		this.id = id;
-	}
-	
-	public int getId() {
-		return id;
-	}
-
 	public int getSerie() {
 		return serie;
 	}

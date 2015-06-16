@@ -18,9 +18,9 @@ public class EscolaDAO {
 			conexao = new ConexaoFactory().getConnection();
 	}
 	public List<String> buscarNomesEscolas(int idCidade) {
-		
+		System.out.println("id da cidade = "+idCidade);
 		List<String> escolas = new ArrayList<String>();
-		String sql = "SELECT * FROM escola;";
+		String sql = "SELECT nome_escola FROM escola WHERE id_cidade = "+idCidade+";";
 
 		try {
 			PreparedStatement ps = conexao.prepareStatement(sql);
@@ -35,7 +35,7 @@ public class EscolaDAO {
 					.println("Erro Classe ImcDAO metodo buscarNomesEscolas(), erro : "
 							+ e);
 		}
-
+		
 		return escolas;
 
 	}
@@ -60,6 +60,27 @@ public class EscolaDAO {
 
 		return idEscola;
 
+	}
+	public List<String> buscarEnsino(int idEscola) {
+
+		String sql = "SELECT ensino FROM serie_turma WHERE id_escola='"+idEscola+"';";
+
+		List<String> ensinos = new ArrayList<String>();
+		try {
+			PreparedStatement ps = conexao.prepareStatement(sql);
+			ResultSet resultado = ps.executeQuery();
+
+			while (resultado.next()) {
+				ensinos.add(resultado.getString("ensino"));
+			}
+
+		} catch (SQLException e) {
+			System.out
+					.println("Erro Classe ImcDAO metodo buscarIDEscola(), erro : "
+							+ e);
+		}
+
+		return ensinos;
 	}
 	
 	

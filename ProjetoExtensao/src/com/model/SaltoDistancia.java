@@ -1,18 +1,18 @@
 package com.model;
 
-public class ArremessoDeMecidineball {
+public class SaltoDistancia {
 
 	private int idade;
-	private int muitoFraco;
 	private int fraco;
 	private int razoavel;
 	private int bom;
 	private int muitoBom;
-	private int excelente;
+	public char Tipo;
 	
-	public ArremessoDeMecidineball() {
+	public SaltoDistancia() {
 		// TODO Auto-generated constructor stub
 	}
+	
 
 	public int getIdade() {
 		return idade;
@@ -20,14 +20,6 @@ public class ArremessoDeMecidineball {
 
 	public void setIdade(int idade) {
 		this.idade = idade;
-	}
-
-	public int getMuitoFraco() {
-		return muitoFraco;
-	}
-
-	public void setMuitoFraco(int muitoFraco) {
-		this.muitoFraco = muitoFraco;
 	}
 
 	public int getFraco() {
@@ -62,15 +54,15 @@ public class ArremessoDeMecidineball {
 		this.muitoBom = muitoBom;
 	}
 
-	public int getExcelente() {
-		return excelente;
+
+	public char getTipo() {
+		return Tipo;
 	}
 
-	public void setExcelente(int excelente) {
-		this.excelente = excelente;
+
+	public void setTipo(char tipo) {
+		Tipo = tipo;
 	}
-	
-	
-	
+
 
 }

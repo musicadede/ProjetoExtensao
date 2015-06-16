@@ -34,9 +34,9 @@ public class ProjetoextensaoUI extends UI {
 		setSizeFull();
 //		ProjetoView inicio = new ProjetoView();
 //		setContent(new UsuarioView());
-		setContent(new AdministradorView());
+//		setContent(new AdministradorView());
 
-//		setContent(new Autenticar());
+		setContent(new Autenticar());
 	}
 
 }

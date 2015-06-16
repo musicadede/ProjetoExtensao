@@ -46,4 +46,9 @@ public class ImcService {
 		
 	}
 
+	public List<Imc> buscarTodos(char imcSexo) {
+		imcDAO = new ImcDAO();
+		return imcDAO.buscarTodos(imcSexo);
+	}
+
 }

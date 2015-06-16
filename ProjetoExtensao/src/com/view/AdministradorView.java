@@ -132,92 +132,95 @@ public class AdministradorView extends VerticalLayout {
 		usuario.addItem("Buscar", buscarUsuario);
 		usuario.addItem("Excluir", excluirUsuario);
 		
-		MenuBar.Command cadastrarImc =new Command() {
+		MenuBar.Command menuImc =new Command() {
 			
 			@Override
 			public void menuSelected(MenuItem selectedItem) {
-				imcCadastrarView();
-				
-			}
-		};
-		
-		MenuBar.Command editarImc =new Command() {
-			
-			@Override
-			public void menuSelected(MenuItem selectedItem) {
-				imcEditarView();
-				
-			}
-		};
-		
-		MenuBar.Command buscarImc =new Command() {
-			
-			@Override
-			public void menuSelected(MenuItem selectedItem) {
-				imcBuscarView();
-				
-			}
-		};
-		
-		MenuBar.Command ExcluirImc =new Command() {
-			
-			@Override
-			public void menuSelected(MenuItem selectedItem) {
-				imcExcluirView();
+				mostrarImcView();
 				
 			}
 		};
 		
 		
-		MenuItem imc = inserirDadosNaTabela.addItem("IMC", null);
-		MenuItem flexibilidade = inserirDadosNaTabela.addItem("Flexibilidade", null);
-		MenuItem abdominal = inserirDadosNaTabela.addItem("Abdominal", null);
-		MenuItem seisMinutos = inserirDadosNaTabela.addItem("6 Minutos", null);
-		MenuItem saltoEmDistancia = inserirDadosNaTabela.addItem("Salto em Distancia", null);
-		MenuItem arremesoMedicineball = inserirDadosNaTabela.addItem("Arremesso de Medidineball", null);
-		MenuItem quadrado = inserirDadosNaTabela.addItem("Quadrado", null);
-		MenuItem corrida20Metros = inserirDadosNaTabela.addItem("Corrida de 20 Metros", null);
+		MenuBar.Command menuFlexibilidade=new Command() {
+			
+			@Override
+			public void menuSelected(MenuItem selectedItem) {
+				mostrarFlexibilidadeView();
+				
+			}
+		};
+		
+		
+		MenuBar.Command menuAbdominal=new Command() {
+			
+			@Override
+			public void menuSelected(MenuItem selectedItem) {
+				mostrarAbdominalView();
+				
+			}
+		};
+		
+		MenuBar.Command menuArremessoMedicineball=new Command() {
+			
+			@Override
+			public void menuSelected(MenuItem selectedItem) {
+				mostrarArremessoMedicineballView();
+				
+			}
+		};
+		
+		
+		MenuBar.Command menuCorrida20Metros=new Command() {
+			
+			@Override
+			public void menuSelected(MenuItem selectedItem) {
+				mostrarCorrida20MetrosView();
+				
+			}
+		};
+		
+		MenuBar.Command menuSeisMinutos=new Command() {
+			
+			@Override
+			public void menuSelected(MenuItem selectedItem) {
+				mostrarSeisMinutosView();
+				
+			}
+		};
+		
+		MenuBar.Command menuSaltoDistancia=new Command() {
+			
+			@Override
+			public void menuSelected(MenuItem selectedItem) {
+				mostrarSaltoDistanciaView();
+				
+			}
+		};
+		
+		
+		MenuBar.Command menuQuadrado=new Command() {
+			
+			@Override
+			public void menuSelected(MenuItem selectedItem) {
+				mostrarQuadradoView();
+				
+			}
+		};
+		
+		
+		
+		MenuItem imc = inserirDadosNaTabela.addItem("IMC", menuImc);
+		MenuItem flexibilidade = inserirDadosNaTabela.addItem("Flexibilidade", menuFlexibilidade);
+		MenuItem abdominal = inserirDadosNaTabela.addItem("Abdominal", menuAbdominal);
+		MenuItem seisMinutos = inserirDadosNaTabela.addItem("6 Minutos", menuSeisMinutos);
+		MenuItem saltoEmDistancia = inserirDadosNaTabela.addItem("Salto em Distancia", menuSaltoDistancia);
+		MenuItem arremesoMedicineball = inserirDadosNaTabela.addItem("Arremesso de Medidineball", menuArremessoMedicineball);
+		MenuItem quadrado = inserirDadosNaTabela.addItem("Quadrado", menuQuadrado);
+		MenuItem corrida20Metros = inserirDadosNaTabela.addItem("Corrida de 20 Metros",menuCorrida20Metros);
 
-		imc.addItem("Cadastra", cadastrarImc);
-		imc.addItem("Editar", editarImc);
-		imc.addItem("Buscar", buscarImc);
-		imc.addItem("Excluir", ExcluirImc);
 		
-		flexibilidade.addItem("Cadastra", null);
-		flexibilidade.addItem("Editar", null);
-		flexibilidade.addItem("Buscar", null);
-		flexibilidade.addItem("Excluir", null);
-		
-		abdominal.addItem("Cadastra", null);
-		abdominal.addItem("Editar", null);
-		abdominal.addItem("Buscar", null);
-		abdominal.addItem("Excluir", null);
-		
-		seisMinutos.addItem("Cadastra", null);
-		seisMinutos.addItem("Editar", null);
-		seisMinutos.addItem("Buscar", null);
-		seisMinutos.addItem("Excluir", null);
-		
-		saltoEmDistancia.addItem("Cadastra", null);
-		saltoEmDistancia.addItem("Editar", null);
-		saltoEmDistancia.addItem("Buscar", null);
-		saltoEmDistancia.addItem("Excluir", null);
-		
-		arremesoMedicineball.addItem("Cadastra", null);
-		arremesoMedicineball.addItem("Editar", null);
-		arremesoMedicineball.addItem("Buscar", null);
-		arremesoMedicineball.addItem("Excluir", null);
-		
-		quadrado.addItem("Cadastra", null);
-		quadrado.addItem("Editar", null);
-		quadrado.addItem("Buscar", null);
-		quadrado.addItem("Excluir", null);
-		
-		corrida20Metros.addItem("Cadastra", null);
-		corrida20Metros.addItem("Editar", null);
-		corrida20Metros.addItem("Buscar", null);
-		corrida20Metros.addItem("Excluir", null);
-		
+				
 
 		hlmenutopo.addComponents(menu, logout);
 		hlmenutopo.setComponentAlignment(logout, Alignment.TOP_RIGHT);
@@ -225,30 +228,60 @@ public class AdministradorView extends VerticalLayout {
 		return hlmenutopo;
 	}
 	
-	protected void imcExcluirView() {
+	protected void mostrarQuadradoView() {
 		hlnavegacao.removeAllComponents();
-		VerticalLayout hlimc = new ImcExcluirView();
-		hlnavegacao.addComponent(hlimc);
-		hlnavegacao.setComponentAlignment(hlimc, Alignment.MIDDLE_CENTER);
+		HorizontalLayout hlQuadrado= new QuadradoView();
+		hlnavegacao.addComponent(hlQuadrado);
+		hlnavegacao.setComponentAlignment(hlQuadrado, Alignment.MIDDLE_CENTER);
+		
 		
 	}
-	protected void imcBuscarView() {
+	protected void mostrarSaltoDistanciaView() {
 		hlnavegacao.removeAllComponents();
-		VerticalLayout hlimc = new ImcBuscarView();
-		hlnavegacao.addComponent(hlimc);
-		hlnavegacao.setComponentAlignment(hlimc, Alignment.MIDDLE_CENTER);
+		HorizontalLayout hlSaltoDistancia= new SaltoDistanciaView();
+		hlnavegacao.addComponent(hlSaltoDistancia);
+		hlnavegacao.setComponentAlignment(hlSaltoDistancia, Alignment.MIDDLE_CENTER);
 		
 	}
-	protected void imcEditarView() {
+	protected void mostrarSeisMinutosView() {
 		hlnavegacao.removeAllComponents();
-		VerticalLayout hlimc = new ImcEditarView();
-		hlnavegacao.addComponent(hlimc);
-		hlnavegacao.setComponentAlignment(hlimc, Alignment.MIDDLE_CENTER);
+		HorizontalLayout hlSeisMinutos= new SeisMinutosView();
+		hlnavegacao.addComponent(hlSeisMinutos);
+		hlnavegacao.setComponentAlignment(hlSeisMinutos, Alignment.MIDDLE_CENTER);
 		
 	}
-	protected void imcCadastrarView() {
+	protected void mostrarCorrida20MetrosView() {
 		hlnavegacao.removeAllComponents();
-		VerticalLayout hlimc = new ImcCadastrarView();
+		HorizontalLayout hlCorrida20Metros = new Corrida20MetrosView();
+		hlnavegacao.addComponent(hlCorrida20Metros);
+		hlnavegacao.setComponentAlignment(hlCorrida20Metros, Alignment.MIDDLE_CENTER);
+		
+	}
+	protected void mostrarArremessoMedicineballView() {
+		hlnavegacao.removeAllComponents();
+		HorizontalLayout hlArremessoMedicineball = new ArremessoMedicineballView();
+		hlnavegacao.addComponent(hlArremessoMedicineball);
+		hlnavegacao.setComponentAlignment(hlArremessoMedicineball, Alignment.MIDDLE_CENTER);
+		
+	}
+	protected void mostrarAbdominalView() {
+		hlnavegacao.removeAllComponents();
+		HorizontalLayout hlAbdominal = new AbdominalView();
+		hlnavegacao.addComponent(hlAbdominal);
+		hlnavegacao.setComponentAlignment(hlAbdominal, Alignment.MIDDLE_CENTER);
+		
+	}
+	public void mostrarFlexibilidadeView() {
+		hlnavegacao.removeAllComponents();
+		HorizontalLayout hlFlexibilidade = new FlexibilidadeView();
+		hlnavegacao.addComponent(hlFlexibilidade);
+		hlnavegacao.setComponentAlignment(hlFlexibilidade, Alignment.MIDDLE_CENTER);
+		
+	}
+
+	protected void mostrarImcView() {
+		hlnavegacao.removeAllComponents();
+		HorizontalLayout hlimc = new ImcView();
 		hlnavegacao.addComponent(hlimc);
 		hlnavegacao.setComponentAlignment(hlimc, Alignment.MIDDLE_CENTER);
 		

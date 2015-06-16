@@ -3,7 +3,6 @@ package com.Service;
 import java.util.List;
 
 import com.DAO.CidadeDAO;
-import com.model.Cidade;
 
 public class CidadeService {
 

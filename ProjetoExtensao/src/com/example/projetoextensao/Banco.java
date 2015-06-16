@@ -538,7 +538,7 @@ public class Banco {
 
 
 	public void editarSerie(Serie serie) {
-		sql = "UPDATE serie SET serie ="+serie.getSerie()+",ensino = '"+serie.getEnsino()+"'  WHERE id_serie = "+serie.getId()+";";
+		sql = "UPDATE serie SET serie ="+serie.getSerie()+",ensino = '"+serie.getEnsino()+"'  WHERE id_serie = "+serie.getSerie()+";";
 
 		try{
 			ps =conexao.prepareStatement(sql);

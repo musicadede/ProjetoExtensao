@@ -8,9 +8,18 @@ public class SeisMinutos {
 	private int bom;
 	private int muitoBom;
 	private int excelente;
+	public char Tipo;
 	
 	public SeisMinutos() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public char getTipo() {
+		return Tipo;
+	}
+
+	public void setTipo(char tipo) {
+		Tipo = tipo;
 	}
 
 	public int getIdade() {
@@ -60,8 +69,6 @@ public class SeisMinutos {
 	public void setExcelente(int excelente) {
 		this.excelente = excelente;
 	}
-	
-	
 	
 	
 	

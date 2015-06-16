@@ -17,6 +17,34 @@ public class ImcDAO {
 	public ImcDAO() {
 		conexao = new ConexaoFactory().getConnection();
 	}
+	
+	public void salvarImc(Imc imc){
+		boolean idade =false;
+		
+		List<Imc> listaImcs = new ArrayList<Imc>();
+		if(imc.getTipo()=='M'){
+			listaImcs = buscarTodos('M');
+		}
+		
+		else if(imc.getTipo()=='F'){
+			listaImcs = buscarTodos('F');
+		}
+		
+		for(Imc c: listaImcs){
+			if(imc.getIdade()==c.getIdade()){
+				idade = true;
+			}
+		}
+
+		
+		if(idade==true){
+			editarImc(imc);
+		}
+		
+		else if(idade==false){
+			salvar(imc);
+		}
+	}
 
 	public void editarImc (Imc imc) {
 		String sql =null;
@@ -51,7 +79,7 @@ public class ImcDAO {
 
 	}
 	
-	public void salvarImc(Imc imc) {
+	public void salvar(Imc imc) {
 		String sql = null;
 		
 		if(imc.getTipo()=='M'){
@@ -194,6 +222,40 @@ public class ImcDAO {
 							+ e);
 		}
 
+	}
+
+	public List<Imc> buscarTodos(char imcSexo) {
+		String sql = null;
+		List<Imc> listaImcs= new ArrayList<Imc>();
+		if(imcSexo=='M'){
+			sql = "SELECT * FROM imc_masculino order by idade_imc asc;";
+			
+		}
+		
+		else if(imcSexo=='F'){
+			sql = "SELECT * FROM imc_feminino order by idade_imc asc;";
+		}
+
+		try {
+			PreparedStatement ps = conexao.prepareStatement(sql);
+			ResultSet resultado = ps.executeQuery();
+
+			while (resultado.next()) {
+				Imc imc = new Imc();
+				imc.setIdade(resultado.getInt("idade_imc"));
+				imc.setBaixoPeso(resultado.getDouble("baixo_peso"));
+				imc.setNormal(resultado.getDouble("normal"));
+				imc.setExcessoPeso(resultado.getDouble("excesso_peso"));
+				listaImcs.add(imc);
+			}
+
+		} catch (SQLException e) {
+			System.out
+					.println("Erro Classe ImcDAO metodo buscartodos(), erro : "
+							+ e);
+		}
+
+		return listaImcs;
 	}
 
 }
